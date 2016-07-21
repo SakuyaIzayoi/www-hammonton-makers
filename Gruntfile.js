@@ -49,7 +49,7 @@ module.exports = function(grunt) {
         files: 'src/**/*.js', tasks: ['jshint']
       },
       pages: {
-        files: 'src/*.html', tasks: ['copy']
+        files: 'src/*.html', tasks: ['newer:copy:main']
       }
     }
   });
@@ -61,5 +61,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.registerTask('minify', ['newer:cssmin:build']);
-  grunt.registerTask('default', ['jshint', 'minify', 'copy']);
+  grunt.registerTask('default', ['jshint', 'minify', 'newer:copy:main']);
 };
