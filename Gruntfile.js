@@ -10,7 +10,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     config: config,
     pkg: config.pkg,
-    //pkg: grunt.file.readJSON('package.json'),
+    bower: grunt.file.readJSON('./.bowerrc'),
 
     cssmin: {
       options: {
@@ -38,7 +38,6 @@ module.exports = function(grunt) {
         ],
       },
     },
-    bower: grunt.file.readJSON('./.bowerrc'),
     watch: {
       files: ['Gruntfile.js', 'src/css/*.css'],
       tasks: ['jshint', 'newer:cssmin:build'],
