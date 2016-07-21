@@ -1,6 +1,16 @@
+var pkgjson = require('./package.json');
+
+var config = {
+  pkg: pkgjson,
+  app: 'src',
+  dist: 'dist'
+};
+
 module.exports = function(grunt) {
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
+    config: config,
+    pkg: config.pkg,
+    //pkg: grunt.file.readJSON('package.json'),
 
     cssmin: {
       options: {
@@ -22,11 +32,13 @@ module.exports = function(grunt) {
     copy: {
       main: {
         files: [
+          { expand: true, cwd: '<%= config.app %>/_lib/skeleton', src: 'css/*', dest: 'src/'},
           { src: 'src/index.html', dest:'dist/index.html' },
           { expand: true, flatten: true, src: ['src/images/*'], dest: 'dist/images/', filter: 'isFile' }
         ],
       },
     },
+    bower: grunt.file.readJSON('./.bowerrc'),
     watch: {
       files: ['Gruntfile.js', 'src/css/*.css'],
       tasks: ['jshint', 'newer:cssmin:build'],

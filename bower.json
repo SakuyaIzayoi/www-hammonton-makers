@@ -1,0 +1,18 @@
+{
+  "name": "hammonton-makers-website",
+  "description": "Landing page for the Hammonton Makers",
+  "main": "",
+  "authors": [
+    "Alessandro Gangemi <agangemi@stevens.edu>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
