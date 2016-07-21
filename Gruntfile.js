@@ -6,6 +6,8 @@ var config = {
   dist: 'dist'
 };
 
+var jsFiles = ['Gruntfile.js', 'src/**/*.js'];
+
 module.exports = function(grunt) {
   grunt.initConfig({
     config: config,
@@ -32,7 +34,9 @@ module.exports = function(grunt) {
       options: {
         reporter: require('jshint-stylish')
       },
-      build: ['Gruntfile.js', 'src/**/*.js']
+      all: {
+        src: jsFiles,
+      }
     },
     copy: {
       main: {
@@ -43,13 +47,17 @@ module.exports = function(grunt) {
       },
     },
     watch: {
-      files: ['Gruntfile.js', 'src/css/*.css'],
-      tasks: ['jshint', 'newer:cssmin:build'],
+      style: {
+        files: 'src/css/*.css',
+        tasks: 'newer:cssmin:build'
+      },
       scripts: {
-        files: 'src/**/*.js', tasks: ['jshint']
+        files: jsFiles,
+        tasks: 'newer:jshint:all'
       },
       pages: {
-        files: 'src/*.html', tasks: ['newer:copy:main']
+        files: 'src/*.html',
+        tasks: 'newer:copy:main'
       }
     }
   });
@@ -61,5 +69,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.registerTask('minify', ['newer:cssmin:build']);
-  grunt.registerTask('default', ['jshint', 'minify', 'newer:copy:main']);
+  grunt.registerTask('default', ['newer:jshint:all', 'minify', 'newer:copy:main']);
+  grunt.registerTask('all', ['jshint', 'cssmin:build', 'copy:main']);
 };
