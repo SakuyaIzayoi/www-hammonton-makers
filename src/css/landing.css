@@ -1,3 +1,31 @@
-.landing {
-  color: red;
+.banner {
+  background-image: url("http://placekitten.com/1920/200");
+  background-size: cover;
+  padding: 12rem;
+}
+
+@media (max-width: 800px) {
+  .banner {
+    background-image: url("http://placekitten.com/800/100");
+    padding: 5rem;
+  }
+}
+
+.banner h1 {
+  text-align: center;
+}
+
+.badges .row {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.badges img {
+  display: block;
+  margin: auto;
+  margin-bottom: 3rem;
+}
+
+.row > p {
+  text-align: center;
 }
