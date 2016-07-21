@@ -17,11 +17,11 @@ module.exports = function(grunt) {
         banner: '/*\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n'
       },
       build: {
-        files: {
-          'dist/css/skeleton.css': 'src/css/skeleton.css',
-          'dist/css/normalize.css': 'src/css/normalize.css'
-        }
-      }
+        files: [
+          { expand: true, cwd: '<%= config.app %>/', src: 'css/*', dest: '<%= config.dist %>' },
+          { expand: true, cwd: '<%= config.app %>/_lib/skeleton', src: 'css/*', dest: '<%= config.dist %>' }
+        ]
+      },
     },
     jshint: {
       options: {
@@ -32,9 +32,8 @@ module.exports = function(grunt) {
     copy: {
       main: {
         files: [
-          { expand: true, cwd: '<%= config.app %>/_lib/skeleton', src: 'css/*', dest: 'src/'},
-          { src: 'src/index.html', dest:'dist/index.html' },
-          { expand: true, flatten: true, src: ['src/images/*'], dest: 'dist/images/', filter: 'isFile' }
+          { src: '<%= config.app %>/index.html', dest:'<%= config.dist %>/index.html' },
+          { expand: true, flatten: true, src: ['<%= config.app %>/images/*'], dest: '<%= config.dist %>/images/', filter: 'isFile' }
         ],
       },
     },
