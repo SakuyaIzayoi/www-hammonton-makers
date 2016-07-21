@@ -10,8 +10,13 @@ module.exports = function(grunt) {
   grunt.initConfig({
     config: config,
     pkg: config.pkg,
-    bower: grunt.file.readJSON('./.bowerrc'),
-
+    bower: {
+      install: {
+        options: {
+          targetDir: '<%= config.app %>/_lib'
+        }
+      }
+    },
     cssmin: {
       options: {
         banner: '/*\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n'
@@ -54,7 +59,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-newer');
-
+  grunt.loadNpmTasks('grunt-bower-task');
   grunt.registerTask('minify', ['newer:cssmin:build']);
   grunt.registerTask('default', ['jshint', 'minify', 'copy']);
 };
