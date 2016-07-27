@@ -73,3 +73,15 @@
 .footer h3 {
   font-variant: small-caps;
 }
+
+.nav ul li {
+  display: inline;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
