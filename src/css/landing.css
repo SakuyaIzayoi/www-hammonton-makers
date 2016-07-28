@@ -85,3 +85,11 @@
 .nav a:hover {
   text-decoration: underline;
 }
+
+.announcement { 
+  margin-top: 2em;
+}
+
+.announcement h1 {
+  text-align: center;
+}
