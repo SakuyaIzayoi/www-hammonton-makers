@@ -42,7 +42,10 @@ module.exports = function(grunt) {
       main: {
         files: [
           { src: '<%= config.app %>/index.html', dest:'<%= config.dist %>/index.html' },
-          { expand: true, flatten: true, src: ['<%= config.app %>/images/*'], dest: '<%= config.dist %>/images/', filter: 'isFile' }
+          { expand: true, flatten: true, src: ['<%= config.app %>/images/*'], dest: '<%= config.dist %>/images/', filter: 'isFile' },
+          { src: '<%= config.app %>/_lib/fontawesome/css/font-awesome.min.css', dest: '<%= config.dist %>/css/font-awesome.min.css' },
+          { expand: true, cwd: '<%= config.app %>/_lib/fontawesome', src: 'fonts/*', dest: '<%= config.dist %>' }
+
         ],
       },
     },
