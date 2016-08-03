@@ -93,3 +93,18 @@
 .announcement h1 {
   text-align: center;
 }
+
+.announcement h3 {
+  text-align: center;
+  margin: 2rem;
+}
+
+.announcement p {
+  font-size: 2rem;
+  text-align: justify;
+  margin: 2rem;
+}
+
+.announcement img {
+  display: block;
+}
