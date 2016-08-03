@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "skeleton": "^2.0.4",
-    "fontawesome": "^4.6.3"
+    "fontawesome": "^4.6.3",
+    "jquery": "^3.1.0"
   }
 }
